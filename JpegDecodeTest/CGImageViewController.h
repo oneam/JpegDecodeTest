@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CGImageViewController.h
 //  JpegDecodeTest
 //
 //  Copyright (c) 2013 Sam Leitch. All rights reserved.
@@ -23,10 +23,8 @@
 //  IN THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "DecodeViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface CGImageViewController : DecodeViewController
 
 @end

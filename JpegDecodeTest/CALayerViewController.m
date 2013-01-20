@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CALayerViewController.m
 //  JpegDecodeTest
 //
 //  Copyright (c) 2013 Sam Leitch. All rights reserved.
@@ -23,10 +23,23 @@
 //  IN THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "CALayerViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface CALayerViewController ()
 
-@property (strong, nonatomic) UIWindow *window;
+@end
+
+@implementation CALayerViewController
+
+- (void)decodeImageFromData:(NSData *)data
+{
+    CFDataRef dataRef = (__bridge CFDataRef)data;
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithCFData(dataRef);
+    CGImageRef image = CGImageCreateWithJPEGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
+    self.imageView.layer.contents = (__bridge id)(image);
+    CGImageRelease(image);
+    CGDataProviderRelease(dataProvider);
+}
 
 @end

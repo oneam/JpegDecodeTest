@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CGImageViewController.m
 //  JpegDecodeTest
 //
 //  Copyright (c) 2013 Sam Leitch. All rights reserved.
@@ -23,10 +23,38 @@
 //  IN THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import "CGImageViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface CGImageViewController ()
 
-@property (strong, nonatomic) UIWindow *window;
+@end
+
+@implementation CGImageViewController
+
+- (void)decodeImageFromData:(NSData *)data
+{
+    // force decode
+    
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
+    CGImageRef jpegImage = CGImageCreateWithJPEGDataProvider(dataProvider, NULL, NO, kCGRenderingIntentDefault);
+    
+    const int width = CGImageGetWidth(jpegImage);
+    const int height = CGImageGetHeight(jpegImage);
+    
+    const CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+    const CGContextRef context = CGBitmapContextCreate(NULL, width, height, 8, width * 4, colorspace, kCGImageAlphaNoneSkipFirst);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), jpegImage);
+    CGImageRef image = CGBitmapContextCreateImage(context);
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorspace);
+    
+    self.imageView.layer.contents = (__bridge id)(image);
+    
+    CGDataProviderRelease(dataProvider);
+    CGImageRelease(jpegImage);
+    CGImageRelease(image);
+}
 
 @end

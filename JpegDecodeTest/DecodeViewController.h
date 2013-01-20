@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  DecodeViewController.h
 //  JpegDecodeTest
 //
 //  Copyright (c) 2013 Sam Leitch. All rights reserved.
@@ -25,8 +25,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface DecodeViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *fpsLabel;
+@property (strong, nonatomic) IBOutlet UIView *imageView;
 
-@property (strong, nonatomic) UIWindow *window;
+@property (assign) Boolean decoding;
+@property (assign) int currentImageIndex;
+@property (assign) int frameCount;
+
+-(void) decodeImageFromData:(NSData*)data;
+-(void) startDecodeLoop;
+-(void) stopDecodeLoop;
 
 @end
