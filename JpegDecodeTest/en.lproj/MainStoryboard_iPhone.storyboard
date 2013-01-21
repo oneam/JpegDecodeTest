@@ -84,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="-3" y="472"/>
         </scene>
-        <!--View Controller - TurboJpeg-->
+        <!--Turbo Jpeg View Controller - TurboJpeg-->
         <scene sceneID="yyz-jE-wfm">
             <objects>
-                <viewController id="f07-JS-hcR" sceneMemberID="viewController">
+                <viewController id="f07-JS-hcR" customClass="TurboJpegViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vzd-GA-FVu">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -115,6 +115,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TurboJpeg" id="rGt-51-XJd"/>
+                    <connections>
+                        <outlet property="fpsLabel" destination="5Ps-xH-OrD" id="fCb-Tn-Wkb"/>
+                        <outlet property="imageView" destination="OCw-V7-J34" id="04n-rV-SiZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oR-7B-BZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,6 +198,9 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TurboJpegViewController" superclassName="DecodeViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TurboJpegViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
