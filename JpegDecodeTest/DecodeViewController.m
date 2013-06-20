@@ -89,7 +89,7 @@ const NSString *imageLock = @"ImageLock";
         self.decoding = YES;
         dispatch_queue_t decodeQueue = dispatch_get_main_queue();
         self.frameCount = 0;
-        __block uint64_t lastUpdate = mach_absolute_time();
+        uint64_t lastUpdate = mach_absolute_time();
         
         if(sUpdateInterval == 0)
         {
@@ -99,27 +99,7 @@ const NSString *imageLock = @"ImageLock";
             sUpdateInterval = updateIntervalNs * timebaseInfo.denom / timebaseInfo.numer;
         }
         
-        __block void(^loop)() = ^{
-            if(!self.decoding)
-            {
-                loop = nil;
-                return;
-            }
-            
-            uint64_t now = mach_absolute_time();
-            uint64_t elapsed = now - lastUpdate;
-
-            if(elapsed > sUpdateInterval)
-            {
-                lastUpdate = now;
-                [self updateFps];
-            }
-            
-            [self decodeNextImage];
-            dispatch_async(decodeQueue, loop);
-        };
-    
-        dispatch_async(decodeQueue, loop);
+        dispatch_async(decodeQueue, ^{ [self decodeAndUpdateFpsWithLastUpdate:lastUpdate]; });
     }
 }
 
@@ -129,6 +109,25 @@ const NSString *imageLock = @"ImageLock";
     {
         self.decoding = NO;
     }
+}
+
+- (void)decodeAndUpdateFpsWithLastUpdate:(uint64_t)lastUpdate
+{
+    if(!self.decoding) return;
+    
+    uint64_t now = mach_absolute_time();
+    uint64_t elapsed = now - lastUpdate;
+    
+    if(elapsed > sUpdateInterval)
+    {
+        lastUpdate = now;
+        [self updateFps];
+    }
+    
+    [self decodeNextImage];
+
+    dispatch_queue_t decodeQueue = dispatch_get_main_queue();
+    dispatch_async(decodeQueue, ^{ [self decodeAndUpdateFpsWithLastUpdate:lastUpdate]; });
 }
 
 + (void)createImages

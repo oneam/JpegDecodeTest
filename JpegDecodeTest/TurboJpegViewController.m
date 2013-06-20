@@ -59,7 +59,7 @@ static void releaseData (void *info, const void *data, size_t size)
     
     int pitch = width*4;
     size_t capacity = height*pitch;
-    unsigned char* imageData = calloc(capacity, sizeof(unsigned char*));
+    unsigned char* imageData = calloc(capacity, sizeof(unsigned char));
     
     result = tjDecompress2(self.decoder, jpegBuf, jpegSize, imageData, width, pitch, height, TJPF_RGBX, 0);
     if(result < 0)
