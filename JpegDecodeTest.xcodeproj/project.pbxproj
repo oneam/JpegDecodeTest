@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2269CB571772AFF10076B120 /* OpenGLESViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2269CB561772AFF10076B120 /* OpenGLESViewController.m */; };
+		226E7925177E41150059D438 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226E7924177E41150059D438 /* OpenGLES.framework */; };
 		22924FF216AB352700BA995D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22924FF116AB352700BA995D /* UIKit.framework */; };
 		22924FF416AB352700BA995D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22924FF316AB352700BA995D /* Foundation.framework */; };
 		22924FF616AB352700BA995D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22924FF516AB352700BA995D /* CoreGraphics.framework */; };
@@ -34,13 +35,13 @@
 		2292503616AB8A8F00BA995D /* him9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2292502A16AB8A8F00BA995D /* him9.jpg */; };
 		2292503816AB9DBF00BA995D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2292503716AB9DBF00BA995D /* QuartzCore.framework */; };
 		2292503B16ABB51A00BA995D /* CGImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2292503A16ABB51A00BA995D /* CGImageViewController.m */; };
-		22BEB82D16AC887A0072EFBD /* libturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BEB82C16AC887A0072EFBD /* libturbojpeg.a */; };
 		22BEB8B416AC89200072EFBD /* TurboJpegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BEB8B316AC89200072EFBD /* TurboJpegViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2269CB551772AFF10076B120 /* OpenGLESViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLESViewController.h; sourceTree = "<group>"; };
 		2269CB561772AFF10076B120 /* OpenGLESViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLESViewController.m; sourceTree = "<group>"; };
+		226E7924177E41150059D438 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		22924FED16AB352700BA995D /* JpegDecodeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JpegDecodeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22924FF116AB352700BA995D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		22924FF316AB352700BA995D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -74,7 +75,6 @@
 		2292503716AB9DBF00BA995D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2292503916ABB51900BA995D /* CGImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGImageViewController.h; sourceTree = "<group>"; };
 		2292503A16ABB51A00BA995D /* CGImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGImageViewController.m; sourceTree = "<group>"; };
-		22BEB82C16AC887A0072EFBD /* libturbojpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libturbojpeg.a; path = /usr/lib/libturbojpeg.a; sourceTree = "<absolute>"; };
 		22BEB8B216AC89200072EFBD /* TurboJpegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TurboJpegViewController.h; sourceTree = "<group>"; };
 		22BEB8B316AC89200072EFBD /* TurboJpegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TurboJpegViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22BEB82D16AC887A0072EFBD /* libturbojpeg.a in Frameworks */,
+				226E7925177E41150059D438 /* OpenGLES.framework in Frameworks */,
 				2292503816AB9DBF00BA995D /* QuartzCore.framework in Frameworks */,
 				22924FF216AB352700BA995D /* UIKit.framework in Frameworks */,
 				22924FF416AB352700BA995D /* Foundation.framework in Frameworks */,
@@ -115,7 +115,7 @@
 		22924FF016AB352700BA995D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				22BEB82C16AC887A0072EFBD /* libturbojpeg.a */,
+				226E7924177E41150059D438 /* OpenGLES.framework */,
 				2292503716AB9DBF00BA995D /* QuartzCore.framework */,
 				22924FF116AB352700BA995D /* UIKit.framework */,
 				22924FF316AB352700BA995D /* Foundation.framework */,
@@ -360,7 +360,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JpegDecodeTest/JpegDecodeTest-Prefix.pch";
 				INFOPLIST_FILE = "JpegDecodeTest/JpegDecodeTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/opt/libjpeg-turbo/lib\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -371,7 +376,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JpegDecodeTest/JpegDecodeTest-Prefix.pch";
 				INFOPLIST_FILE = "JpegDecodeTest/JpegDecodeTest-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/opt/libjpeg-turbo/lib\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

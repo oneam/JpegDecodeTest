@@ -58,6 +58,7 @@ const NSString *imageLock = @"ImageLock";
 - (void)updateFps
 {
     double frameRate = (double)self.frameCount / kUpdateIntervalSeconds;
+    NSLog(@"FPS: %f", frameRate);
     self.frameCount = 0;
     self.fpsLabel.text = [NSString stringWithFormat:@"%.0f", frameRate];
 }

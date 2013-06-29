@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VuG-ln-xTF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VuG-ln-xTF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Layer View Controller - CGLayer-->
@@ -124,10 +124,10 @@
             </objects>
             <point key="canvasLocation" x="475" y="473"/>
         </scene>
-        <!--View Controller - TJ+GPU-->
+        <!--OpenGLES View Controller - TJ+GPU-->
         <scene sceneID="8aE-8B-VnI">
             <objects>
-                <viewController id="ZGk-cK-JEd" sceneMemberID="viewController">
+                <viewController id="ZGk-cK-JEd" customClass="OpenGLESViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mJm-l5-ao3">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -155,6 +155,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TJ+GPU" id="fw6-N0-ZRg"/>
+                    <connections>
+                        <outlet property="fpsLabel" destination="iJo-Jh-xuO" id="SbS-UY-tLg"/>
+                        <outlet property="imageView" destination="IxY-e3-ZUG" id="Jza-jy-gcX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAW-XX-dI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -182,27 +186,6 @@
             <point key="canvasLocation" x="-971" y="-320"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CALayerViewController" superclassName="DecodeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CALayerViewController.h"/>
-        </class>
-        <class className="CGImageViewController" superclassName="DecodeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CGImageViewController.h"/>
-        </class>
-        <class className="DecodeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DecodeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="fpsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="TurboJpegViewController" superclassName="DecodeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TurboJpegViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
