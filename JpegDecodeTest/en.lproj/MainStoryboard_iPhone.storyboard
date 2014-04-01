@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VuG-ln-xTF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="VuG-ln-xTF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Layer View Controller - CGLayer-->
         <scene sceneID="ci2-P5-kgl">
             <objects>
                 <viewController id="xoC-zZ-Kyn" customClass="CALayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w6r-Ac-RnJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ed9-tM-uR8"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yQd-KS-tOV">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ola-yr-21U">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dei-c9-53R">
+                                <rect key="frame" x="258" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="5mj-Jh-LEG"/>
                                 </constraints>
@@ -26,12 +33,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dei-c9-53R" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="1h5-1y-3Q7"/>
-                            <constraint firstItem="ola-yr-21U" firstAttribute="trailing" secondItem="yQd-KS-tOV" secondAttribute="trailing" type="default" id="5hE-SC-Kxp"/>
-                            <constraint firstItem="dei-c9-53R" firstAttribute="top" secondItem="yQd-KS-tOV" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Gjk-sB-qOm"/>
-                            <constraint firstItem="ola-yr-21U" firstAttribute="top" secondItem="yQd-KS-tOV" secondAttribute="top" type="default" id="VOx-iy-QGD"/>
-                            <constraint firstItem="ola-yr-21U" firstAttribute="bottom" secondItem="yQd-KS-tOV" secondAttribute="bottom" type="default" id="jNH-cy-MVI"/>
-                            <constraint firstItem="ola-yr-21U" firstAttribute="leading" secondItem="yQd-KS-tOV" secondAttribute="leading" type="default" id="qCb-04-36M"/>
+                            <constraint firstAttribute="trailing" secondItem="dei-c9-53R" secondAttribute="trailing" constant="20" symbolic="YES" id="1h5-1y-3Q7"/>
+                            <constraint firstItem="ola-yr-21U" firstAttribute="trailing" secondItem="yQd-KS-tOV" secondAttribute="trailing" id="5hE-SC-Kxp"/>
+                            <constraint firstItem="dei-c9-53R" firstAttribute="top" secondItem="yQd-KS-tOV" secondAttribute="top" constant="20" symbolic="YES" id="Gjk-sB-qOm"/>
+                            <constraint firstItem="ola-yr-21U" firstAttribute="top" secondItem="yQd-KS-tOV" secondAttribute="top" id="VOx-iy-QGD"/>
+                            <constraint firstItem="ola-yr-21U" firstAttribute="bottom" secondItem="yQd-KS-tOV" secondAttribute="bottom" id="jNH-cy-MVI"/>
+                            <constraint firstItem="ola-yr-21U" firstAttribute="leading" secondItem="yQd-KS-tOV" secondAttribute="leading" id="qCb-04-36M"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="CGLayer" id="Crm-fr-NVa"/>
@@ -48,14 +55,20 @@
         <scene sceneID="caA-k8-mJu">
             <objects>
                 <viewController id="cZz-kT-ZmY" customClass="CGImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UNm-ar-35a"/>
+                        <viewControllerLayoutGuide type="bottom" id="TrC-oq-b7F"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eQf-g9-gUY">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aX2-JL-vjF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAv-rV-7ZC">
+                                <rect key="frame" x="258" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="aYO-W3-e8r"/>
                                 </constraints>
@@ -66,12 +79,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="FAv-rV-7ZC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ZH4-c0-Dkp"/>
-                            <constraint firstItem="FAv-rV-7ZC" firstAttribute="top" secondItem="eQf-g9-gUY" secondAttribute="top" constant="20" symbolic="YES" type="default" id="aWp-BB-h58"/>
-                            <constraint firstItem="aX2-JL-vjF" firstAttribute="leading" secondItem="eQf-g9-gUY" secondAttribute="leading" type="default" id="eWX-iS-DsW"/>
-                            <constraint firstItem="aX2-JL-vjF" firstAttribute="bottom" secondItem="eQf-g9-gUY" secondAttribute="bottom" type="default" id="gv4-ih-JGw"/>
-                            <constraint firstItem="aX2-JL-vjF" firstAttribute="top" secondItem="eQf-g9-gUY" secondAttribute="top" type="default" id="hpe-Lr-zVs"/>
-                            <constraint firstItem="aX2-JL-vjF" firstAttribute="trailing" secondItem="eQf-g9-gUY" secondAttribute="trailing" type="default" id="xP7-2c-JMe"/>
+                            <constraint firstAttribute="trailing" secondItem="FAv-rV-7ZC" secondAttribute="trailing" constant="20" symbolic="YES" id="ZH4-c0-Dkp"/>
+                            <constraint firstItem="FAv-rV-7ZC" firstAttribute="top" secondItem="eQf-g9-gUY" secondAttribute="top" constant="20" symbolic="YES" id="aWp-BB-h58"/>
+                            <constraint firstItem="aX2-JL-vjF" firstAttribute="leading" secondItem="eQf-g9-gUY" secondAttribute="leading" id="eWX-iS-DsW"/>
+                            <constraint firstItem="aX2-JL-vjF" firstAttribute="bottom" secondItem="eQf-g9-gUY" secondAttribute="bottom" id="gv4-ih-JGw"/>
+                            <constraint firstItem="aX2-JL-vjF" firstAttribute="top" secondItem="eQf-g9-gUY" secondAttribute="top" id="hpe-Lr-zVs"/>
+                            <constraint firstItem="aX2-JL-vjF" firstAttribute="trailing" secondItem="eQf-g9-gUY" secondAttribute="trailing" id="xP7-2c-JMe"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="CGImage" id="tLc-2h-Ua8"/>
@@ -88,14 +101,20 @@
         <scene sceneID="yyz-jE-wfm">
             <objects>
                 <viewController id="f07-JS-hcR" customClass="TurboJpegViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4bF-uH-bXu"/>
+                        <viewControllerLayoutGuide type="bottom" id="8yd-HV-uTq"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Vzd-GA-FVu">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OCw-V7-J34">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ps-xH-OrD">
+                                <rect key="frame" x="258" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="Um4-qH-mxB"/>
                                 </constraints>
@@ -106,12 +125,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5Ps-xH-OrD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="BpD-KP-06u"/>
-                            <constraint firstItem="OCw-V7-J34" firstAttribute="trailing" secondItem="Vzd-GA-FVu" secondAttribute="trailing" type="default" id="HFl-DJ-q3Y"/>
-                            <constraint firstItem="OCw-V7-J34" firstAttribute="leading" secondItem="Vzd-GA-FVu" secondAttribute="leading" type="default" id="gxV-Cp-vAH"/>
-                            <constraint firstItem="5Ps-xH-OrD" firstAttribute="top" secondItem="Vzd-GA-FVu" secondAttribute="top" constant="20" symbolic="YES" type="default" id="n1W-47-UDI"/>
-                            <constraint firstItem="OCw-V7-J34" firstAttribute="bottom" secondItem="Vzd-GA-FVu" secondAttribute="bottom" type="default" id="r96-3d-QKP"/>
-                            <constraint firstItem="OCw-V7-J34" firstAttribute="top" secondItem="Vzd-GA-FVu" secondAttribute="top" type="default" id="zFj-MJ-BOq"/>
+                            <constraint firstAttribute="trailing" secondItem="5Ps-xH-OrD" secondAttribute="trailing" constant="20" symbolic="YES" id="BpD-KP-06u"/>
+                            <constraint firstItem="OCw-V7-J34" firstAttribute="trailing" secondItem="Vzd-GA-FVu" secondAttribute="trailing" id="HFl-DJ-q3Y"/>
+                            <constraint firstItem="OCw-V7-J34" firstAttribute="leading" secondItem="Vzd-GA-FVu" secondAttribute="leading" id="gxV-Cp-vAH"/>
+                            <constraint firstItem="5Ps-xH-OrD" firstAttribute="top" secondItem="Vzd-GA-FVu" secondAttribute="top" constant="20" symbolic="YES" id="n1W-47-UDI"/>
+                            <constraint firstItem="OCw-V7-J34" firstAttribute="bottom" secondItem="Vzd-GA-FVu" secondAttribute="bottom" id="r96-3d-QKP"/>
+                            <constraint firstItem="OCw-V7-J34" firstAttribute="top" secondItem="Vzd-GA-FVu" secondAttribute="top" id="zFj-MJ-BOq"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TurboJpeg" id="rGt-51-XJd"/>
@@ -128,14 +147,20 @@
         <scene sceneID="8aE-8B-VnI">
             <objects>
                 <viewController id="ZGk-cK-JEd" customClass="OpenGLESViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yiZ-8N-dv1"/>
+                        <viewControllerLayoutGuide type="bottom" id="IWC-Ng-qjB"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mJm-l5-ao3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IxY-e3-ZUG">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
+                            <glkView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" enableSetNeedsDisplay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFd-jz-u99">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </glkView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJo-Jh-xuO">
+                                <rect key="frame" x="258" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="iji-2X-rIR"/>
                                 </constraints>
@@ -146,18 +171,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IxY-e3-ZUG" firstAttribute="trailing" secondItem="mJm-l5-ao3" secondAttribute="trailing" type="default" id="FIT-2o-AgW"/>
-                            <constraint firstItem="iJo-Jh-xuO" firstAttribute="top" secondItem="mJm-l5-ao3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="SAz-LO-2H2"/>
-                            <constraint firstAttribute="trailing" secondItem="iJo-Jh-xuO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Sae-MW-WlN"/>
-                            <constraint firstItem="IxY-e3-ZUG" firstAttribute="bottom" secondItem="mJm-l5-ao3" secondAttribute="bottom" type="default" id="dXB-4H-tEL"/>
-                            <constraint firstItem="IxY-e3-ZUG" firstAttribute="leading" secondItem="mJm-l5-ao3" secondAttribute="leading" type="default" id="u0O-oP-p85"/>
-                            <constraint firstItem="IxY-e3-ZUG" firstAttribute="top" secondItem="mJm-l5-ao3" secondAttribute="top" type="default" id="zQ6-PH-Q7l"/>
+                            <constraint firstItem="iJo-Jh-xuO" firstAttribute="top" secondItem="mJm-l5-ao3" secondAttribute="top" constant="20" symbolic="YES" id="SAz-LO-2H2"/>
+                            <constraint firstAttribute="trailing" secondItem="iJo-Jh-xuO" secondAttribute="trailing" constant="20" symbolic="YES" id="Sae-MW-WlN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TJ+GPU" id="fw6-N0-ZRg"/>
                     <connections>
                         <outlet property="fpsLabel" destination="iJo-Jh-xuO" id="SbS-UY-tLg"/>
-                        <outlet property="imageView" destination="IxY-e3-ZUG" id="Jza-jy-gcX"/>
+                        <outlet property="imageView" destination="UFd-jz-u99" id="N23-03-FGD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAW-XX-dI3" userLabel="First Responder" sceneMemberID="firstResponder"/>

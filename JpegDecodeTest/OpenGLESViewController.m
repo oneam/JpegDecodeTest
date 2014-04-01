@@ -45,6 +45,18 @@ NSString *const vertexShaderString = SHADER_STRING
     }
 );
 
+/*
+ From Rec. ITU-R BT.2020
+ Y' = 0.2627R' + 0.6780G' + 0.0593B'
+ Cb' = (B' - Y')/1.4746
+ Cr' = (R' - Y')/1.8814
+ 
+ Derived
+ R' = Y' + 1.8814Cr'
+ G' = Y' + 0.7290Cr' + 0.1290Cb'
+ B' = Y'             + 1.4746Cb'
+ */
+
 NSString *const fragmentShaderString = SHADER_STRING
 (
     varying highp vec2 texcoord;
@@ -57,7 +69,10 @@ NSString *const fragmentShaderString = SHADER_STRING
     uniform int uEnabled;
     uniform int vEnabled;
 
-    uniform mediump mat4 yuv2rgb;
+    const mediump mat4 yuv2rgb = mat4(1.0, 1.8814, 0.0000, 0.0,
+                                      1.0, 0.7290, 0.1290, 0.0,
+                                      1.0, 0.0000, 1.4746, 0.0,
+                                      0.0, 0.0000, 0.0000, 1.0);
 
     void main()
     {
@@ -150,41 +165,21 @@ static const GLfloat texcoordVertices[] = {
      1.0f, 0.0f,
 };
 
-/*
- From Rec. ITU-R BT.2020
- Y' = 0.2627R' + 0.6780G' + 0.0593B'
- Cb' = (B' - Y')/1.4746
- Cr' = (R' - Y')/1.8814
- 
- Derived
- R' = Y' + 1.8814Cr'
- G' = Y' + 0.7290Cr' + 0.1290Cb'
- B' = Y'             + 1.4746Cb'
- */
-
-static const GLfloat yuv2rgb[] = {
-    1.0f, 1.8814f, 0.0000f, 0.0f,
-    1.0f, 0.7290f, 0.1290f, 0.0f,
-    1.0f, 0.0000f, 1.4746f, 0.0f,
-    0.0f, 0.0000f, 0.0000f, 1.0f,
-};
-
 @interface OpenGLESViewController ()
 {
-    GLuint _framebufferRef;
-    GLuint _renderbufferRef;
     GLuint _programRef;
     
     GLuint _positionRef;
+    GLuint _positionBufferRef;
+    
     GLuint _texcoordRef;
-    GLint _yuv2rgbRef;
+    GLuint _texcoordBufferRef;
 
     GLuint _samplerRef[3];
     GLuint _textureRef[3];
     GLuint _enabledRef[3];
     
-    GLint _viewportWidth;
-    GLint _viewportHeight;
+    NSData *_jpegData;
 }
 
 @property tjhandle decoder;
@@ -198,34 +193,46 @@ static const GLfloat yuv2rgb[] = {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initDecoder];
+    [self initGLKView];
+    [self compileShader];
+    [self loadBuffers];
+    [self initTextures];
+}
 
+- (void)initDecoder
+{
     self.decoder = tjInitDecompress();
-    
-    self.renderLayer = [[CAEAGLLayer alloc] init];
-    self.renderLayer.opaque = YES;
-    [self.imageView.layer addSublayer:self.renderLayer];
+}
 
-    EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+- (void)initGLKView
+{
+    GLKView *view = (GLKView *)self.imageView;
+    view.delegate = self;
+    view.enableSetNeedsDisplay = YES;
     
+    EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+
     if (!context) {
         NSLog(@"failed to create context");
         return;
     }
-    
+
     if(![EAGLContext setCurrentContext:context]) {
         NSLog(@"failed to setup context");
         return;
     }
     
+    view.context = context;
     self.context = context;
-    
-    glGenFramebuffers(1, &_framebufferRef);
-    glBindFramebuffer(GL_FRAMEBUFFER, _framebufferRef);
-    
-    glGenRenderbuffers(1, &_renderbufferRef);
-    glBindRenderbuffer(GL_RENDERBUFFER, _renderbufferRef);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderbufferRef);
 
+    view.drawableColorFormat = GLKViewDrawableColorFormatRGBA8888;
+    view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    view.drawableStencilFormat = GLKViewDrawableStencilFormat8;
+}
+
+- (void)compileShader
+{
     GLuint vertexShader = compileShader(GL_VERTEX_SHADER, vertexShaderString);
 	if (!vertexShader) return;
     
@@ -243,10 +250,9 @@ static const GLfloat yuv2rgb[] = {
 		NSLog(@"Failed to link program %d", _programRef);
         return;
     }
-    
+
     _positionRef = glGetAttribLocation(_programRef, "position");
     _texcoordRef = glGetAttribLocation(_programRef, "texcoord_a");
-    _yuv2rgbRef = glGetUniformLocation(_programRef, "yuv2rgb");
     
     _samplerRef[0] = glGetUniformLocation(_programRef, "ySampler");
     _samplerRef[1] = glGetUniformLocation(_programRef, "uSampler");
@@ -255,44 +261,62 @@ static const GLfloat yuv2rgb[] = {
     _enabledRef[0] = glGetUniformLocation(_programRef, "yEnabled");
     _enabledRef[1] = glGetUniformLocation(_programRef, "uEnabled");
     _enabledRef[2] = glGetUniformLocation(_programRef, "vEnabled");
+}
+
+- (void)loadBuffers
+{
+    glGenBuffers(1, &_positionBufferRef);
+    glBindBuffer(GL_ARRAY_BUFFER, _positionBufferRef);
+    glBufferData(GL_ARRAY_BUFFER, 2 * 4 * sizeof(float), positionVertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(_positionRef);
+    glVertexAttribPointer(_positionRef, 2, GL_FLOAT, GL_FALSE, 0, 0);
     
+    glGenBuffers(1, &_texcoordBufferRef);
+    glBindBuffer(GL_ARRAY_BUFFER, _texcoordBufferRef);
+    glBufferData(GL_ARRAY_BUFFER, 2 * 4 * sizeof(float), texcoordVertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(_texcoordRef);
+    glVertexAttribPointer(_texcoordRef, 2, GL_FLOAT, GL_FALSE, 0, 0);
+}
+
+- (void)initTextures
+{
     glGenTextures(3, _textureRef);
+
+    for(int i = 0; i < 3; ++i)
+    {
+        glActiveTexture(GL_TEXTURE0 + i);
+        glBindTexture(GL_TEXTURE_2D, _textureRef[i]);
+        
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    }
 }
 
 - (void)dealloc
 {
     tjDestroy(_decoder);
-    glDeleteFramebuffers(1, &_framebufferRef);
-    glDeleteRenderbuffers(1, &_renderbufferRef);
     glDeleteProgram(_programRef);
     glDeleteTextures(3, _textureRef);
-}
-
-- (void)viewDidLayoutSubviews
-{
-    CGRect frame = self.imageView.layer.frame;
-    if(CGRectEqualToRect(frame, self.renderLayer.frame))
-        return;
-    
-    self.renderLayer.frame = frame;
-    
-    glBindRenderbuffer(GL_RENDERBUFFER, _renderbufferRef);
-    [self.context renderbufferStorage:GL_RENDERBUFFER fromDrawable:self.renderLayer];
-    
-    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_viewportWidth);
-    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_viewportHeight);
-    glViewport(0, 0, _viewportWidth, _viewportHeight);
+    glDeleteBuffers(1, &_positionBufferRef);
+    glDeleteBuffers(1, &_texcoordBufferRef);
 }
 
 - (void)decodeImageFromData:(NSData *)jpegData
 {
-    if (_viewportWidth <= 0 || _viewportHeight <= 0) return;
+    _jpegData = jpegData;
+    [self.imageView setNeedsDisplay];
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+{
+    if(!_jpegData) return;
     
     int status;
-    GLenum glStatus = GL_NO_ERROR;
     int width, height, subsamp;
-    UInt8* jpegBuf = (UInt8*)(jpegData.bytes);
-    UInt64 jpegSize = jpegData.length;
+    UInt8* jpegBuf = (UInt8*)(_jpegData.bytes);
+    UInt64 jpegSize = _jpegData.length;
     
     status = tjDecompressHeader2(self.decoder, jpegBuf, jpegSize, &width, &height, &subsamp);
     
@@ -303,7 +327,7 @@ static const GLfloat yuv2rgb[] = {
     }
     
     int uvWidth, uvHeight;
-    bool uvEnabled;
+    BOOL uvEnabled;
     
     switch(subsamp)
     {
@@ -323,7 +347,7 @@ static const GLfloat yuv2rgb[] = {
             uvEnabled = NO;
             break;
     }
-
+    
     size_t yDataLength = width * height;
     size_t uDataLength = uvWidth * uvHeight;
     size_t vDataLength = uvWidth * uvHeight;
@@ -339,67 +363,40 @@ static const GLfloat yuv2rgb[] = {
         NSLog(@"TurboJPEG error: %s", tjGetErrorStr());
         return;
     }
-
-    UInt8* yBuf = imageBuf;
+    
+    UInt8* yBuf = (UInt8*)imageBuf;
     UInt8* uBuf = yBuf + yDataLength;
     UInt8* vBuf = uBuf + uDataLength;
     
-    [EAGLContext setCurrentContext:self.context];
-    
-    glBindFramebuffer(GL_FRAMEBUFFER, _framebufferRef);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 	glUseProgram(_programRef);
-    
-    glUniformMatrix4fv(_yuv2rgbRef, 1, GL_FALSE, yuv2rgb);
-    
-    glVertexAttribPointer(_positionRef, 2, GL_FLOAT, GL_FALSE, 0, positionVertices);
-    glEnableVertexAttribArray(_positionRef);
-    
-    glVertexAttribPointer(_texcoordRef, 2, GL_FLOAT, GL_FALSE, 0, texcoordVertices);
-    glEnableVertexAttribArray(_texcoordRef);
     
     GLboolean textureEnabled[] = { YES, uvEnabled, uvEnabled };
     GLsizei textureWidth[] = { width, uvWidth, uvWidth };
     GLsizei textureHeight[] = { height, uvHeight, uvHeight };
     GLvoid* textureBuf[] = { yBuf, uBuf, vBuf };
-
+    
     for(int i = 0; i < 3; ++i)
     {
         glUniform1i(_enabledRef[i], textureEnabled[i]);
+        glUniform1i(_samplerRef[i], i);
         if(!textureEnabled[i]) continue;
         
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, _textureRef[i]);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, textureWidth[i], textureHeight[i], 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, textureBuf[i]);
-        glUniform1i(_samplerRef[i], i);
-        
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     }
-    
+
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     
     bool glError = false;
-    glStatus = glGetError();
+    GLenum glStatus = glGetError();
     while (glStatus != GL_NO_ERROR) {
-        NSLog(@"GL error: %x", status);
+        NSLog(@"GL error: %x", glStatus);
         glError = true;
         glStatus = glGetError();
     }
-    
-    if(glError) return;
-    
-    glStatus = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-    if (glStatus != GL_FRAMEBUFFER_COMPLETE) {
-        NSLog(@"GL framebuffer error: %x", status);
-        return;
-    }
-    
-    glBindRenderbuffer(GL_RENDERBUFFER, _renderbufferRef);
-    [self.context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
 @end

@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z6F-LU-O75">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Z6F-LU-O75">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Image View Controller - CGImage-->
         <scene sceneID="xAu-Ro-2AM">
             <objects>
                 <viewController id="tK4-v7-LP1" customClass="CGImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pz3-rz-fgy"/>
+                        <viewControllerLayoutGuide type="bottom" id="3bC-rb-WyQ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tiw-T6-VWb">
-                        <rect key="frame" x="0.0" y="20" width="768" height="955"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-et-aKm">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIB-lD-Mnt">
+                                <rect key="frame" x="706" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="qVL-RW-kHE"/>
                                 </constraints>
@@ -26,12 +33,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BCa-et-aKm" firstAttribute="bottom" secondItem="Tiw-T6-VWb" secondAttribute="bottom" type="default" id="ABR-sC-Ypn"/>
-                            <constraint firstItem="BCa-et-aKm" firstAttribute="top" secondItem="Tiw-T6-VWb" secondAttribute="top" type="default" id="AD0-Fj-wwg"/>
-                            <constraint firstItem="BCa-et-aKm" firstAttribute="leading" secondItem="Tiw-T6-VWb" secondAttribute="leading" type="default" id="XK1-Hr-4ND"/>
-                            <constraint firstItem="VIB-lD-Mnt" firstAttribute="top" secondItem="Tiw-T6-VWb" secondAttribute="top" constant="20" symbolic="YES" type="default" id="d5y-gf-Gr8"/>
-                            <constraint firstItem="BCa-et-aKm" firstAttribute="trailing" secondItem="Tiw-T6-VWb" secondAttribute="trailing" type="default" id="hzI-Rh-LyM"/>
-                            <constraint firstAttribute="trailing" secondItem="VIB-lD-Mnt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ib3-Z4-hSc"/>
+                            <constraint firstItem="BCa-et-aKm" firstAttribute="bottom" secondItem="Tiw-T6-VWb" secondAttribute="bottom" id="ABR-sC-Ypn"/>
+                            <constraint firstItem="BCa-et-aKm" firstAttribute="top" secondItem="Tiw-T6-VWb" secondAttribute="top" id="AD0-Fj-wwg"/>
+                            <constraint firstItem="BCa-et-aKm" firstAttribute="leading" secondItem="Tiw-T6-VWb" secondAttribute="leading" id="XK1-Hr-4ND"/>
+                            <constraint firstItem="VIB-lD-Mnt" firstAttribute="top" secondItem="Tiw-T6-VWb" secondAttribute="top" constant="20" symbolic="YES" id="d5y-gf-Gr8"/>
+                            <constraint firstItem="BCa-et-aKm" firstAttribute="trailing" secondItem="Tiw-T6-VWb" secondAttribute="trailing" id="hzI-Rh-LyM"/>
+                            <constraint firstAttribute="trailing" secondItem="VIB-lD-Mnt" secondAttribute="trailing" constant="20" symbolic="YES" id="ib3-Z4-hSc"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="CGImage" id="xvk-bh-v5c"/>
@@ -48,14 +55,20 @@
         <scene sceneID="lcb-K7-mEh">
             <objects>
                 <viewController id="gjW-Vw-cro" customClass="CALayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1QX-nh-mAj"/>
+                        <viewControllerLayoutGuide type="bottom" id="COc-8f-ALu"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="F6H-9O-xIk">
-                        <rect key="frame" x="0.0" y="20" width="768" height="955"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fA-BH-ung">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aB2-ed-kZ4">
+                                <rect key="frame" x="706" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="RbT-Re-XU3"/>
                                 </constraints>
@@ -66,12 +79,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5fA-BH-ung" firstAttribute="leading" secondItem="F6H-9O-xIk" secondAttribute="leading" type="default" id="Gxb-Gp-0Th"/>
-                            <constraint firstItem="5fA-BH-ung" firstAttribute="bottom" secondItem="F6H-9O-xIk" secondAttribute="bottom" type="default" id="OXL-oJ-3Cx"/>
-                            <constraint firstItem="5fA-BH-ung" firstAttribute="trailing" secondItem="F6H-9O-xIk" secondAttribute="trailing" type="default" id="OlZ-wN-csf"/>
-                            <constraint firstItem="aB2-ed-kZ4" firstAttribute="top" secondItem="F6H-9O-xIk" secondAttribute="top" constant="20" symbolic="YES" type="default" id="baj-9y-zBQ"/>
-                            <constraint firstAttribute="trailing" secondItem="aB2-ed-kZ4" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dqg-qv-OwC"/>
-                            <constraint firstItem="5fA-BH-ung" firstAttribute="top" secondItem="F6H-9O-xIk" secondAttribute="top" type="default" id="vA0-wQ-ITG"/>
+                            <constraint firstItem="5fA-BH-ung" firstAttribute="leading" secondItem="F6H-9O-xIk" secondAttribute="leading" id="Gxb-Gp-0Th"/>
+                            <constraint firstItem="5fA-BH-ung" firstAttribute="bottom" secondItem="F6H-9O-xIk" secondAttribute="bottom" id="OXL-oJ-3Cx"/>
+                            <constraint firstItem="5fA-BH-ung" firstAttribute="trailing" secondItem="F6H-9O-xIk" secondAttribute="trailing" id="OlZ-wN-csf"/>
+                            <constraint firstItem="aB2-ed-kZ4" firstAttribute="top" secondItem="F6H-9O-xIk" secondAttribute="top" constant="20" symbolic="YES" id="baj-9y-zBQ"/>
+                            <constraint firstAttribute="trailing" secondItem="aB2-ed-kZ4" secondAttribute="trailing" constant="20" symbolic="YES" id="dqg-qv-OwC"/>
+                            <constraint firstItem="5fA-BH-ung" firstAttribute="top" secondItem="F6H-9O-xIk" secondAttribute="top" id="vA0-wQ-ITG"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="CALayer" id="F2Q-3g-eYr"/>
@@ -109,14 +122,20 @@
         <scene sceneID="cQE-KM-j1F">
             <objects>
                 <viewController id="Dzl-iO-iuk" customClass="TurboJpegViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="77q-bT-FhN"/>
+                        <viewControllerLayoutGuide type="bottom" id="QON-8e-C7r"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CHG-uB-OW1">
-                        <rect key="frame" x="0.0" y="20" width="768" height="955"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qw0-XR-S90">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jm-Xk-20k">
+                                <rect key="frame" x="706" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="2PC-no-kYz"/>
                                 </constraints>
@@ -127,12 +146,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qw0-XR-S90" firstAttribute="bottom" secondItem="CHG-uB-OW1" secondAttribute="bottom" type="default" id="DZJ-ER-mWD"/>
-                            <constraint firstAttribute="trailing" secondItem="6Jm-Xk-20k" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="SNz-Cv-7yA"/>
-                            <constraint firstItem="qw0-XR-S90" firstAttribute="trailing" secondItem="CHG-uB-OW1" secondAttribute="trailing" type="default" id="SZp-Lu-2oK"/>
-                            <constraint firstItem="qw0-XR-S90" firstAttribute="top" secondItem="CHG-uB-OW1" secondAttribute="top" type="default" id="UAr-U8-CJP"/>
-                            <constraint firstItem="6Jm-Xk-20k" firstAttribute="top" secondItem="CHG-uB-OW1" secondAttribute="top" constant="20" symbolic="YES" type="default" id="WKa-dZ-oqs"/>
-                            <constraint firstItem="qw0-XR-S90" firstAttribute="leading" secondItem="CHG-uB-OW1" secondAttribute="leading" type="default" id="bBd-GO-ClQ"/>
+                            <constraint firstItem="qw0-XR-S90" firstAttribute="bottom" secondItem="CHG-uB-OW1" secondAttribute="bottom" id="DZJ-ER-mWD"/>
+                            <constraint firstAttribute="trailing" secondItem="6Jm-Xk-20k" secondAttribute="trailing" constant="20" symbolic="YES" id="SNz-Cv-7yA"/>
+                            <constraint firstItem="qw0-XR-S90" firstAttribute="trailing" secondItem="CHG-uB-OW1" secondAttribute="trailing" id="SZp-Lu-2oK"/>
+                            <constraint firstItem="qw0-XR-S90" firstAttribute="top" secondItem="CHG-uB-OW1" secondAttribute="top" id="UAr-U8-CJP"/>
+                            <constraint firstItem="6Jm-Xk-20k" firstAttribute="top" secondItem="CHG-uB-OW1" secondAttribute="top" constant="20" symbolic="YES" id="WKa-dZ-oqs"/>
+                            <constraint firstItem="qw0-XR-S90" firstAttribute="leading" secondItem="CHG-uB-OW1" secondAttribute="leading" id="bBd-GO-ClQ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TurboJpeg" id="HLa-dY-vBl"/>
@@ -149,14 +168,20 @@
         <scene sceneID="MLb-XG-Hdp">
             <objects>
                 <viewController id="Aul-2H-DZ3" customClass="OpenGLESViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dIt-mh-a5z"/>
+                        <viewControllerLayoutGuide type="bottom" id="cLv-ud-CzL"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="E42-Pf-u3X">
-                        <rect key="frame" x="0.0" y="20" width="768" height="955"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1t-ax-Tl7">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
+                            <glkView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" enableSetNeedsDisplay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RK-LE-HLC">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </glkView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faP-sl-SD1">
+                                <rect key="frame" x="706" y="20" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="hwE-Uo-vxz"/>
                                 </constraints>
@@ -167,18 +192,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="S1t-ax-Tl7" firstAttribute="trailing" secondItem="E42-Pf-u3X" secondAttribute="trailing" type="default" id="1uW-dc-WP2"/>
-                            <constraint firstAttribute="trailing" secondItem="faP-sl-SD1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Mhr-Ua-PPs"/>
-                            <constraint firstItem="S1t-ax-Tl7" firstAttribute="bottom" secondItem="E42-Pf-u3X" secondAttribute="bottom" type="default" id="fu5-Dw-6wF"/>
-                            <constraint firstItem="faP-sl-SD1" firstAttribute="top" secondItem="E42-Pf-u3X" secondAttribute="top" constant="20" symbolic="YES" type="default" id="lJb-e9-fZO"/>
-                            <constraint firstItem="S1t-ax-Tl7" firstAttribute="top" secondItem="E42-Pf-u3X" secondAttribute="top" type="default" id="rcV-fN-1DA"/>
-                            <constraint firstItem="S1t-ax-Tl7" firstAttribute="leading" secondItem="E42-Pf-u3X" secondAttribute="leading" type="default" id="wej-Nv-y9Q"/>
+                            <constraint firstAttribute="trailing" secondItem="faP-sl-SD1" secondAttribute="trailing" constant="20" symbolic="YES" id="Mhr-Ua-PPs"/>
+                            <constraint firstItem="faP-sl-SD1" firstAttribute="top" secondItem="E42-Pf-u3X" secondAttribute="top" constant="20" symbolic="YES" id="lJb-e9-fZO"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TJ+GPU" id="uAP-oD-WWq"/>
                     <connections>
                         <outlet property="fpsLabel" destination="faP-sl-SD1" id="bRy-j4-I5U"/>
-                        <outlet property="imageView" destination="S1t-ax-Tl7" id="KSm-2v-5ew"/>
+                        <outlet property="imageView" destination="1RK-LE-HLC" id="B6m-8T-c4s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtI-Yn-KWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,32 +207,8 @@
             <point key="canvasLocation" x="1913" y="147"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CALayerViewController" superclassName="DecodeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CALayerViewController.h"/>
-        </class>
-        <class className="CGImageViewController" superclassName="DecodeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CGImageViewController.h"/>
-        </class>
-        <class className="DecodeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DecodeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="fpsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="OpenGLESViewController" superclassName="DecodeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OpenGLESViewController.h"/>
-        </class>
-        <class className="TurboJpegViewController" superclassName="DecodeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TurboJpegViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

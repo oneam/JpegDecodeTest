@@ -24,7 +24,8 @@
 //
 
 #import "DecodeViewController.h"
+#import <GLKit/GLKit.h>
 
-@interface OpenGLESViewController : DecodeViewController
+@interface OpenGLESViewController : DecodeViewController<GLKViewDelegate>
 
 @end
